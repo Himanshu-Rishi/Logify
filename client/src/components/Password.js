@@ -35,7 +35,7 @@ const Password = () => {
   function recovery() {
     Navigate("/recovery");
   }
-  if (isLoading) return <h1 className="text-2xl font-bold">isLoading</h1>;
+  if (isLoading) return <h1 className="loader">Loading...</h1>;
   if (serverError)
     return (
       <div className="vertical-center">
