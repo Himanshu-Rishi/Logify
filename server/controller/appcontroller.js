@@ -2,7 +2,8 @@ import UserModel from "../model/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import otpGenerator from "otp-generator";
-import ENV from '../config.js'
+import dotenv from "dotenv";
+dotenv.config();
 export async function register(req, res) {
   try {
     const { username, password, email, profile } = req.body;
@@ -76,9 +77,9 @@ export async function login(req, res) {
             const token = jwt.sign(
               {
                 userId: user._id,
-                username: user.username
+                username: user.username,
               },
-              ENV.JWT_SECRET,
+              process.env.REACT_APP_JWT_SECRET,
               { expiresIn: "24h" }
             );
             return res.status(200).send({

@@ -1,13 +1,14 @@
 import nodemailer from "nodemailer";
 import Mailgen from "mailgen";
 
-import ENV from "../config.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 let nodeConfig = {
   service: "gmail",
   auth: {
-    user: ENV.EMAIL,
-    pass: ENV.PASSWORD,
+    user: process.env.REACT_APP_EMAIL,
+    pass: process.env.REACT_APP_ATLAS_PASSWORD,
   },
 };
 
@@ -38,7 +39,7 @@ export const registerMail = async (req, res) => {
   var emailBody = MailGenerator.generate(email);
 
   let message = {
-    from: ENV.EMAIL,
+    from: process.env.REACT_APP_EMAIL,
     to: userEmail,
     subject: subject || "Signup Successful",
     html: emailBody,

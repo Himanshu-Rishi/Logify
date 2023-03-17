@@ -1,5 +1,6 @@
 import UserModel from "../model/User.js";
-import ENV from "../config.js";
+import dotenv from "dotenv";
+dotenv.config();
 import jwt from "jsonwebtoken";
 
 
@@ -20,7 +21,7 @@ export async function verifyUsername(req, res, next) {
 export async function auth(req, res, next){
   try {
       const token = req.headers.authorization.split(' ')[1];
-      const decoded_token = jwt.verify(token, ENV.JWT_SECRET);
+      const decoded_token = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
       req.user = decoded_token;
       next();
   } catch (error) {
