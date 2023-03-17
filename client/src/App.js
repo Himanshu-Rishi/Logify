@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Username from './components/Username';
+import Password from './components/Password';
+import Reset from './components/Reset';
+import Register from './components/Register';
+import Recovery from './components/Recovery';
+import Profile from './components/Profile';
+import { AuthorizeUser, ProtectRoute } from './middleware/auth';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Username />} />
+        <Route
+          exact
+          path="/password"
+          element={
+            <ProtectRoute>
+              <Password />
+            </ProtectRoute>
+          }
+        />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/reset" element={<Reset />} />
+        <Route exact path="/recovery" element={<Recovery />} />
+        <Route
+          exact
+          path="/profile"
+          element={
+            <AuthorizeUser>
+              <Profile />
+            </AuthorizeUser>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default App
