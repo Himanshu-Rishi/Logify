@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://logify-backend.onrender.com";
 export async function getUsername()
 {
   const token = localStorage.getItem('token');
