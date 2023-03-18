@@ -4,14 +4,21 @@ import Mailgen from "mailgen";
 import dotenv from "dotenv";
 dotenv.config();
 
+// let nodeConfig = {
+//   service: "gmail",
+//   auth: {
+//     user: process.env.REACT_APP_EMAIL,
+//     pass: process.env.REACT_APP_ATLAS_PASSWORD,
+//   },
+// };
 let nodeConfig = {
-  service: "gmail",
+  host: "smtp.ethereal.email",
+  port: 587,
   auth: {
     user: process.env.REACT_APP_EMAIL,
     pass: process.env.REACT_APP_ATLAS_PASSWORD,
   },
 };
-
 let transporter = nodemailer.createTransport(nodeConfig);
 let MailGenerator = new Mailgen({
   theme: "default",
