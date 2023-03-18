@@ -9,7 +9,7 @@ const [OTP, setOTP] = useState();
 const navigate = useNavigate();
 useEffect(() => {
   generateOTP(username).then((OTP) => {
-    console.log(OTP);
+    // console.log(OTP);
     if (OTP) return toast.success("OTP has been send to your email!");
     return toast.error("Problem while generating OTP!");
   });
@@ -37,9 +37,9 @@ function resendOTP() {
     error: <b>Could not Send it!</b>,
   });
 
-  sentPromise.then((OTP) => {
-    console.log(OTP);
-  });
+  // sentPromise.then((OTP) => {
+  //   console.log(OTP);
+  // });
 }
   return (
     <div className="main__container">

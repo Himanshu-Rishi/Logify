@@ -9,7 +9,6 @@ import useFetch from "../hook/fetch.hook.js";
 const Profile = () => {
   const Navigate = useNavigate();
   const [{ isLoading, apiData, serverError }] = useFetch();
-  console.log(apiData);
   const [file, setFile] = useState();
   const avatar = "/assets/user.png";
   const formik = useFormik({
